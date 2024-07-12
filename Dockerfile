@@ -1,12 +1,12 @@
-FROM python:3.9-buster
+FROM python:3.12-alpine
 
 WORKDIR /workdir
 
-COPY ./requirements.txt /workdir/requirements.txt
+COPY ./requirements.txt ./requirements.txt
 
 RUN pip install -r requirements.txt
 
-COPY . /workdir
+COPY . .
 
 EXPOSE 3000
 
