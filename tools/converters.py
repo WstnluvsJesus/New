@@ -48,10 +48,19 @@ def view_count_text_to_number(text):
 	if text is None:
 		return 0
 
+	suffixes = {
+		"K": 1000,
+		"M": 1000000,
+		"B": 1000000000,
+	}
+
 	first_word = text.split(" ")[0].replace(",", "")
 	if first_word == "No":
 		return 0
 	else:
+		for s in suffixes:
+			if first_word.endswith(s):
+				return int(suffixes[s] * float(first_word[:-1]))
 		return int(first_word)
 
 def get_view_count_or_recommended(view_count_container):
