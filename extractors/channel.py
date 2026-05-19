@@ -38,7 +38,7 @@ def extract_channel(ucid, second__path="user"):
 				"error": alert_text,
 				"identifier": "NOT_FOUND"
 			}
-		elif alert_text.startswith("This account has been terminated"):
+		elif alert_text.startswith("This account has been terminated") or alert_text.startswith("This channel was removed"):
 			return {
 				"error": alert_text,
 				"identifier": "ACCOUNT_TERMINATED"
