@@ -132,12 +132,16 @@ def extract_channel(ucid, second__path="user"):
 				for r in maybe_get(lv, "metadata", "lockupMetadataViewModel", "metadata", "contentMetadataViewModel", "metadataRows", default=[]):
 					for p in r.get("metadataParts", []):
 						t = maybe_get(p, "text", "content", default="")
+						a = maybe_get(p, "accessibilityLabel", default="")
 						if t.startswith("Streamed") or t.endswith("ago"):
 							published_text = t
 							published = past_text_to_time(published_text)
 						elif t.endswith("views"):
 							view_count_text_short = t
 							view_count_text = t
+						elif a.endswith("views"):
+							view_count_text_short = f"{t} views"
+							view_count_text = f"{t} views"
 
 				for o in lv["contentImage"]["thumbnailViewModel"]["overlays"]:
 					if m := o.get("thumbnailBottomOverlayViewModel"):
