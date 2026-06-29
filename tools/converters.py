@@ -169,7 +169,7 @@ def uncompress_counter(text):
 		return int(float(text[:-1]) * multiplier)
 
 def past_text_to_time(text):
-	spaced_text = re.sub(r"^([0-9]+)([^ ])", r"\1 \2", text)
+	spaced_text = re.sub(r"^([0-9]++)([^ ])", r"\1 \2", text)
 	words = spaced_text.split(" ")
 	if words[0] == "Streamed":
 		words = words[1:]
